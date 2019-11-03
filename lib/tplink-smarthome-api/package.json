@@ -1,0 +1,129 @@
+{
+  "name": "tplink-smarthome-api",
+  "version": "1.2.0",
+  "description": "TP-Link Smart Home API",
+  "author": {
+    "name": "Patrick Seal"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/plasticrake/tplink-smarthome-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plasticrake/tplink-smarthome-api/issues",
+    "email": "code@plasticrake.com"
+  },
+  "keywords": [
+    "tplink",
+    "kasa",
+    "hs100",
+    "hs105",
+    "hs107",
+    "hs110",
+    "hs200",
+    "hs220",
+    "hs300",
+    "lb100",
+    "lb110",
+    "lb120",
+    "lb130",
+    "lb200",
+    "lb230",
+    "home",
+    "smartplug",
+    "smartswitch",
+    "smartbulb",
+    "api"
+  ],
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=6.4.0",
+    "npm": ">=3"
+  },
+  "dependencies": {
+    "commander": "^2.19.0",
+    "lodash.castarray": "^4.4.0",
+    "lodash.defaultto": "^4.14.0",
+    "lodash.groupby": "^4.6.0",
+    "lodash.isequal": "^4.5.0",
+    "loglevel": "^1.6.1",
+    "tplink-smarthome-crypto": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "babel-plugin-istanbul": "^5.1.0",
+    "bats": "^1.1.0",
+    "bats-assert": "git+https://github.com/ztombol/bats-assert.git",
+    "bats-support": "git+https://github.com/ztombol/bats-support.git",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-things": "^0.2.0",
+    "codecov": "^3.1.0",
+    "cross-env": "^5.2.0",
+    "dotenv": "^6.2.0",
+    "jsdoc-to-markdown": "^4.0.1",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "rewire": "^4.0.1",
+    "semistandard": "^13.0.1",
+    "sinon": "^7.2.2",
+    "sinon-chai": "^3.3.0",
+    "tplink-smarthome-simulator": "^1.8.0"
+  },
+  "scripts": {
+    "preversion": "npm test",
+    "version": "npm run build && npm run docs && git add -A README.md API.md",
+    "postversion": "git push && git push --tags",
+    "test": "semistandard && cross-env NODE_ENV=test nyc mocha && bats test",
+    "coverage": "cross-env NODE_ENV=test nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov",
+    "build": "babel src -d lib",
+    "prepare": "npm run build",
+    "docs": "jsdoc2md 'src/**/*.js' > API.md && jsdoc2md --template=jsdoc2md/README.hbs 'src/**/*.js' > README.md"
+  },
+  "bin": {
+    "tplink-smarthome-api": "lib/cli.js"
+  },
+  "semistandard": {
+    "ignore": [
+      "/docs"
+    ]
+  },
+  "gitHead": "546662e4b2e6218fbd538c4926deeea856766e43",
+  "homepage": "https://github.com/plasticrake/tplink-smarthome-api#readme",
+  "_id": "tplink-smarthome-api@1.2.0",
+  "_npmVersion": "6.5.0",
+  "_nodeVersion": "10.14.1",
+  "_npmUser": {
+    "name": "plasticrake",
+    "email": "code@plasticrake.com"
+  },
+  "dist": {
+    "integrity": "sha512-OcZsT+fLqlydSTFc/5WHfBmpDstlS4uXEVpj4/TyVZf9L0z4hy1r2E5eTl/nBvriKxUQ6efAu+BlxWZcJO3xzA==",
+    "shasum": "fffe2badbd346236c4f048ff068cdc10d8fcc893",
+    "tarball": "https://registry.npmjs.org/tplink-smarthome-api/-/tplink-smarthome-api-1.2.0.tgz",
+    "fileCount": 23,
+    "unpackedSize": 251021,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcQliwCRA9TVsSAnZWagAAXzUP/0fHyHl5nLl30da2M/zS\nLruWOehIrQDjion5/s+YdXx8RvSUgGx/1FePYrBsWTofULtaesZOhdiGdiqe\nE/SddJCLe6j8Sf5XYB7Z0azgaHJx9xTSrwEDZFT1lYwmcrAqjoLBVfh8oox8\nMVa4xla7uUxA98aImkqu5nMc+BPxoCOTqtNulq8rf9JH96574G+WoooTVumK\n8GDntRc56xVmMAsEnljvYf6J+p+C+U2i32cEv05W6lMLVndMROY6LuyAR3gL\nYo9vucjctVuCSxoyAHIMtZIxl7RzWikPNjnBySa3XlQZY2/H/mt36N4Mx1gD\n5ecmhrA12WtfWmWQI8aLvelNQ5esZD6yU2UpKCQ/4K3Z6Exr5tIO6FIOD0Zx\nTvHxe+E3hPwHHNyRznEXOxeEjej8axKzKoizvEmw1/OLUobRVXFEjTo6n/da\nxNsc2+tQKYaGUgD2uH15ALbtwLs5nYcZz2bWV7I0CqCbjiJ7tGhCUfRFtWLA\nI5ZahteWTmhq1DLNt5C+UtP7iyrgMHeLzofOjNkRERNMNit0unh/Wmh04cJp\n+bwRQxRXhV61Mg87k3Y7rlbVT4xAF4Q6JCx6x1h8BpMICZcnwlei2KJqMse3\nivk1MDtfUys+exsFlKoXCwOg7TLI2r7Op7EmiQufeQX9yOVx0pqUG3hwZD2P\n1gd1\r\n=a71k\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "maintainers": [
+    {
+      "name": "plasticrake",
+      "email": "code@plasticrake.com"
+    }
+  ],
+  "directories": {},
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/tplink-smarthome-api_1.2.0_1547851951728_0.4682695057302766"
+  },
+  "_hasShrinkwrap": false,
+  "_shasum": "fffe2badbd346236c4f048ff068cdc10d8fcc893",
+  "_resolved": "https://registry.npmjs.org/tplink-smarthome-api/-/tplink-smarthome-api-1.2.0.tgz",
+  "_from": "tplink-smarthome-api@*",
+  "readme": "ERROR: No README data found!"
+}

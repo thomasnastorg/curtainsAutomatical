@@ -1,0 +1,39 @@
+{
+  "name": "tplink-monitor",
+  "version": "0.0.1",
+  "description": "An energy monitoring dashboard for TP-Link smart plugs",
+  "repository": "https://github.com/jamesbarnett91/tplink-monitor",
+  "license": "GPL-3.0",
+  "author": {
+    "name": "James Barnett"
+  },
+  "scripts": {
+    "start": "node ./app.js",
+    "dist": "pkg . --out-path ./dist"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "tplink-smarthome-api": "0.22.0",
+    "moment": "2.22.0",
+    "express-ws": "3.0.0",
+    "shelljs": "0.8.3"
+  },
+  "devDependencies": {
+    "pkg": "4.3.1"
+  },
+  "bin": {
+    "tplink-monitor": "./app.js"
+  },
+  "pkg": {
+    "scripts": "node_modules/hbs/lib/hbs.js",
+    "assets": [
+      "views/*",
+      "public/**/*"
+    ]
+  }
+}
