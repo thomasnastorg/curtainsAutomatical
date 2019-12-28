@@ -5,3 +5,6 @@ docker-compose up
 docker-compose down
 
 docker-compose build
+
+
+vertion linux: Debian GNU/Linux 9 (stretch)
