@@ -1,14 +1,17 @@
-import React from "react";
+import React , { Component } from "react";
 
-function Home(){
-
-  return(
-    <div>
-      <h1>bienvenu</h1>
-      
-    </div>
-  );
+constructor() {
+  super();
+    this.state = {
+      cont = 0
+    }
 }
 
-
+class Home extends Component {
+  render(){
+    return(
+      <h1>kkkkk {this.props.name}</h1>
+    );
+  }
+}
 export default Home;
