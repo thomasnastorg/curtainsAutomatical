@@ -13,7 +13,24 @@ services:
   mongo:
     container_name: mongo
     image: mongo
-    #volumes:
-    #  - ./data:/data/db
+    volumes:
+      - ./data:/data/db
     ports:
       - '27017:27017'
+ # mosquitto:
+  #  hostname: mosquitto
+  #  container_name: mosquitto
+  #  image: eclipse-mosquitto
+  #  volumes:
+  #    - ./eclipse_mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+   #   - ./eclipse_mosquitto/data
+    #  - ./eclipse_mosquitto/log
+
+  #  networks:
+  #      - default
+  #  expose:
+  #      - "1883"
+  #      - "9001"
+  #  ports:
+  #      - "1883:1883"
+  #      - "9001:9001"
