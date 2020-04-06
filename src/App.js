@@ -1,27 +1,11 @@
-import React, { Component } from 'react'
-import './App.css'
-import GuessCount from './GuessCount'
-import Card from './Card'
+import React from 'react';
+import { render } from '@testing-library/react';
+import App from './App';
 
-class App extends Component {
-  handleCardClicke(card){
-    console.log(card, 'clicked')
-  }
-  render() {
-    const won = new Date().getSeconds() % 2 === 0
-    return (
-      <div className="memory"> 
-      <GuessCount guesses={0}/>
-      <Card card='#' feedback="hidden" onClick={this.handleCardClicke}/>
-      <Card card='@' feedback="justMatched"onClick={this.handleCardClicke}/>
-      <Card card='°' feedback="justMismatched"onClick={this.handleCardClicke}/>
-      <Card card='d' feedback="visble"onClick={this.handleCardClicke}/>
-      <Card card='w' feedback="hidden"onClick={this.handleCardClicke}/>
-      <Card card='<' feedback="justMatched"onClick={this.handleCardClicke}/>
-      {won && <p> WINNER </p>}
-      </div>
-    )
-  }
-}
+test('renders learn react link', () => {
+  const { getByText } = render(<App />);
+  const linkElement = getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
 
-export default App
+export default App;
