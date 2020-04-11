@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import myTheme from 'myTheme'
 
 
-//creation de la card 
-class frame{
-    constructor(titre, largeur, hauteur){
-    this.titre = titre;
-    this.largeur = largeur;
-    this.hauteur = hauteur;
-    }
+
+<div className="frame">1</div>
+
+function frameEdite(){
+<div className="frame">1</div>
+//creation de la card    
 }
+
 function heater(){
 
 
