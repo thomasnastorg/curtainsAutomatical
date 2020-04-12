@@ -1,14 +1,15 @@
 import React from 'react';
 import './myTheme.css'; 
-const panneaux = () => (<div className="frame">4</div>)
+import panneaux from './Module'
 
 
 
 function App()  {
   return(
     <div className="container">
-      <panneaux/>
       
+    <panneaux/>
+    <div className="frame">45</div>
     </div> 
     );
 }

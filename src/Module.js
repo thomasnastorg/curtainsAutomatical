@@ -1,4 +1,9 @@
 import React from 'react';
+import './myTheme.css'; 
+
+const panneaux = () => {return React.createElement('div',{id:'hello', className:"frame"},1)}
+
+
 
 
 
@@ -13,7 +18,7 @@ import React from 'react';
 //insertion de temperatur 
 
 
-
+export default panneaux
 
 
 
