@@ -1,8 +1,13 @@
 import React from 'react';
 import './myTheme.css'; 
 
-const panneaux = () => {return React.createElement('div',{id:'hello', className:"frame"},1)}
-
+const Panneaux = (props) => {
+    return React.createElement(
+        'div',
+        {id:'hello', className:"frame"},
+        `${props.name}`
+        )
+    }
 
 
 
@@ -18,7 +23,12 @@ const panneaux = () => {return React.createElement('div',{id:'hello', className:
 //insertion de temperatur 
 
 
-export default panneaux
+
+const freebox = () =>{
+    // affichage du debit 
+}
+
+export default Panneaux
 
 
 

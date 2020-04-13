@@ -1,6 +1,6 @@
 import React from 'react';
 import './myTheme.css'; 
-import panneaux from './Module'
+import Panneaux from './Module'
 
 
 
@@ -8,11 +8,14 @@ function App()  {
   return(
     <div className="container">
       
-    <panneaux/>
-    <div className="frame">45</div>
-    </div> 
+    <Panneaux name = "chambre"/>
+    <Panneaux name = "room"/>
+    <Panneaux name = "kinchen"/>
+    <Panneaux name = "Freebox"/>
+    </div>
     );
 }
+
 
 export default App;
 
