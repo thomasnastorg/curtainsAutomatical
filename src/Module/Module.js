@@ -1,5 +1,5 @@
 import React from 'react';
-import './myTheme.css'; 
+
 
 const Panneaux = (props) => {
     return React.createElement(
@@ -24,9 +24,6 @@ const Panneaux = (props) => {
 
 
 
-const freebox = () =>{
-    // affichage du debit 
-}
 
 export default Panneaux
 

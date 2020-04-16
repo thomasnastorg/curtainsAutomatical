@@ -1,4 +1,4 @@
-FROM node:13.6.0
+FROM node:13.13.0
 
 RUN mkdir -p /usr/src/app
 
