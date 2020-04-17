@@ -1,6 +1,7 @@
 import React from 'react';
 import './myTheme.css'; 
-import panneaux from './Module'
+import Panneaux from './Module/Module'
+import Freebox from './Module/Freebox_module'
 
 
 
@@ -8,11 +9,15 @@ function App()  {
   return(
     <div className="container">
       
-    <panneaux/>
-    <div className="frame">45</div>
-    </div> 
+      <Freebox />
+    <Panneaux name = "chambre"/>
+    <Panneaux name = "room"/>
+    <Panneaux name = "kinchen"/>
+    <Panneaux name = "coucou"/>
+    </div>
     );
 }
+
 
 export default App;
 
