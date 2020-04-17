@@ -10,7 +10,7 @@ VOLUME ["/usr/src/app"]
 
 RUN npm install
 
-COPY . ./
+COPY . ./b
 
 EXPOSE 3000
 
