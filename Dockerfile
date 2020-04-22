@@ -1,4 +1,4 @@
-FROM node:13.13.0
+FROM node:12.16.2
 
 RUN mkdir -p /usr/src/app
 
@@ -10,7 +10,7 @@ VOLUME ["/usr/src/app"]
 
 RUN npm install
 
-COPY . ./b
+COPY . ./
 
 EXPOSE 3000
 

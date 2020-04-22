@@ -30,14 +30,15 @@ class Freebox extends Component{
        
         xhr.send(/*JSON.stringify({"app_id": "fr.freebox.home","app_name": "Test App","app_version": "0.0.1","device_name": "compte de thomas"}))*/
        
-      
-        /*fetch('http://mafreebox.freebox.fr/api/v4/login/authorize/')
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-        });*/
+        
+        fetch('http://mafreebox.freebox.fr/api/v4/login/authorize/',).then(function(response) {
+          return response.json()
+       }).then(data=>{
+         console.log(data)
+       })
+       .catch(function(err) {
+         console.log(err);
+       });
       
        
     }
@@ -45,7 +46,6 @@ class Freebox extends Component{
        
         return (
             <div className="frame">
-              <form onSubmit={this.handleSubmit} crossOrigin="anonymous"></form>
                 <div className="text-center-Dark">
                     freebox
                 </div >
@@ -62,7 +62,7 @@ class Freebox extends Component{
 
     export default Freebox
 
-
+    
     
 
 /*request.onreadystatechange = function() {
