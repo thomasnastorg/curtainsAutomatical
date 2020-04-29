@@ -6,13 +6,18 @@ services:
     build: .
     ports:
       - '3000:3000'
+      - '1883:1883'
     links:
       - mongo
+    #command: "node ./Mqtt/broker"
+    #command: "npm start"   
     volumes:
       - ./:/usr/src/app
     stdin_open: true
-    tty: true 
+    tty: true
+    
   mongo:
+    restart: always
     container_name: mongo
     image: mongo
     #volumes:
