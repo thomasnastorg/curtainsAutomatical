@@ -4,10 +4,10 @@ import React from 'react';
 const Panneaux = (props) => {
     return React.createElement(
         'div',
-        {id:'hello', className:"frame"},
+        { id: 'hello', className: "frame" },
         `${props.name}`
-        )
-    }
+    )
+}
 
 
 

@@ -1,6 +1,6 @@
- /**
- * Configurations of logger.
- */
+/**
+* Configurations of logger.
+*/
 const winston = require('winston');
 
 

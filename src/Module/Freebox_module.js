@@ -2,68 +2,68 @@ import React, { Component } from 'react'
 
 
 
-class Freebox extends Component{
-    constructor(props){
-        super(props)
-    
-        this.state = {
-            "app_id": "fr.freebox.home",
-            "app_name": "Test App",
-            "app_version": "0.0.1",
-            "device_name": "compte de thomas"
-        }
-    }
-    componentWillMount() {
-        this.getData()
-      }
+class Freebox extends Component {
+  constructor(props) {
+    super(props)
 
-    getData(){
-        /*var xhr = new XMLHttpRequest() 
-        xhr.overrideMimeType("application/json");
-        xhr.addEventListener('load', () => {
-            // update the state of the component with the result here
-            console.log(xhr.responseText)
-          })
-        xhr.open('POST', 'http://mafreebox.freebox.fr/api/v4/login/authorize/',true)
-        //xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        //xhr.setRequestHeader("Content-type", this.state)
-       
-        xhr.send(/*JSON.stringify({"app_id": "fr.freebox.home","app_name": "Test App","app_version": "0.0.1","device_name": "compte de thomas"}))*/
-       
-        
-        fetch('http://mafreebox.freebox.fr/api/v4/login/authorize/',).then(function(response) {
-          return response.json()
-       }).then(data=>{
-         console.log(data)
-       })
-       .catch(function(err) {
-         console.log(err);
-       });
-      
-       
+    this.state = {
+      "app_id": "fr.freebox.home",
+      "app_name": "Test App",
+      "app_version": "0.0.1",
+      "device_name": "compte de thomas"
     }
-    render() {
-       
-        return (
-            <div className="frame">
-                <div className="text-center-Dark">
-                    freebox
+  }
+  componentWillMount() {
+    this.getData()
+  }
+
+  getData() {
+    /*var xhr = new XMLHttpRequest() 
+    xhr.overrideMimeType("application/json");
+    xhr.addEventListener('load', () => {
+        // update the state of the component with the result here
+        console.log(xhr.responseText)
+      })
+    xhr.open('POST', 'http://mafreebox.freebox.fr/api/v4/login/authorize/',true)
+    //xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    //xhr.setRequestHeader("Content-type", this.state)
+   
+    xhr.send(/*JSON.stringify({"app_id": "fr.freebox.home","app_name": "Test App","app_version": "0.0.1","device_name": "compte de thomas"}))*/
+
+
+    fetch('http://mafreebox.freebox.fr/api/v4/login/authorize/').then(function (response) {
+      return response.json()
+    }).then(data => {
+      console.log(data)
+    })
+      .catch(function (err) {
+        console.log(err);
+      });
+
+
+  }
+  render() {
+
+    return (
+      <div className="frame">
+        <div className="text-center-Dark">
+          freebox
                 </div >
-                <div className = "text-Dark">
-                    <p>debit</p>
-                    <h5> 2 up</h5>
-                    
-                </div>
-            </div>
-            )
+        <div className="text-Dark">
+          <p>debit</p>
+          <h5> 2 up</h5>
 
-        }
- }
+        </div>
+      </div>
+    )
 
-    export default Freebox
+  }
+}
 
-    
-    
+export default Freebox
+
+
+
 
 /*request.onreadystatechange = function() {
   if(this.readyState == this.HEADERS_RECEIVED) {

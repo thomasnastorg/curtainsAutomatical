@@ -26,12 +26,12 @@ client.on('message', (topic, message) => {
   }
 })
 
-function sendStateUpdate () {
+function sendStateUpdate() {
   console.log('sending state %s', state)
   client.publish('garage/state', state)
 }
 
-function handleOpenRequest (message) {
+function handleOpenRequest(message) {
   if (state !== 'open' && state !== 'opening') {
     console.log('opening garage door')
     state = 'opening'
@@ -45,7 +45,7 @@ function handleOpenRequest (message) {
   }
 }
 
-function handleCloseRequest (message) {
+function handleCloseRequest(message) {
   if (state !== 'closed' && state !== 'closing') {
     state = 'closing'
     sendStateUpdate()
@@ -61,7 +61,7 @@ function handleCloseRequest (message) {
 /**
  * Want to notify controller that garage is disconnected before shutting down
  */
-function handleAppExit (options, err) {
+function handleAppExit(options, err) {
   if (err) {
     console.log(err.stack)
   }

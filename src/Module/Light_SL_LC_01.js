@@ -5,73 +5,75 @@ import { json } from 'body-parser';
 
 var client = mqtt.connect('ws://192.168.1.105:4000')
 
-export class Light extends Component{
-  constructor(props){
+export class Light extends Component {
+  constructor(props) {
     super(props);
-  this.state ={ 
-    eta:"on"
+    this.state = {
+      eta: "ON"
     }
-   
+    this.handleClick = this.handleClick.bind(this)
   }
-    componentDidMount() {
-      this.client = mqtt.connect('ws://192.168.1.105:4000')  
-      this.client.on("connect", ()=> {
-        console.log("Connected to MQTT")
-        this.client.subscribe('state/state', console.log) //position 0
-        })
+  componentDidMount() {
+    this.client = mqtt.connect('ws://192.168.1.105:4000')
+    this.client.on("connect", () => {
+      console.log("Connected to MQTT")
+      this.client.subscribe('state/state', console.log) //position 0
+    })
+
+    this.client.on('message', (topic, message) => {
+
+      if(console.log(message.toString()) == "ON"){
+        this.handleClick('OFF')
+      }else{
+        this.handleClick('ON')
+      }
       
-      this.client.on('message', (topic, message ) => {
-         
-        this.setState({
-          eta : message.toString(),
-          //couleur : message.toString()
-        })
-        console.log("eta "+ this.state.eta)
-        
-      })
-    }
-   
-    componentWillMount(){
-      
-      if(this.client)
+
+    })
+  }
+
+  componentWillMount() {
+
+    if (this.client)
       this.client.end()
-    }
-    //handleOnchange = (e) =>this.setState({brightness: e.target.brightness} )
-  
-    handleClick() {
-      this.setState(this.state.isToggleOn ? 'ON' : 'OFF')
-    }
-  
-    render() {
-        return(
-          
-            <div className="frame">
-                
-                <div className="text-center-Dark">
-                    LED
+  }
+  //handleOnchange = (e) =>this.setState({brightness: e.target.brightness} )
+
+  handleClick() {
+    (this.setState(state=>({eta: !state.eta  })))
+    
+  }
+
+  render() {
+    return (
+
+      <div className="frame">
+
+        <div className="text-center-Dark">
+          LED
                 </div >
-                <div>
-                <button onClick={() => this.handleClick()} className='bouton' size='5' >
-                {this.state.eta}
+        <div>
+          <button onClick={() => this.handleClick()} className='bouton' size='5' >
+            {this.state.eta ? 'ON' : 'OFF'}
+          </button>
+        </div>
+        <div>
+          <input type="text" value="brightness" name="brightness" size="10" />
+        </div>
+        <div>
+          <input type="text" value="red" name="red" size="10" />
+          <input type="text" value="bleu" name="bleu" size="10" />
+          <input type="text" value="grenne" name="grenne" size="10" />
+        </div>
+
+        <button className='bouton'>
+          sudmit
                 </button>
-                </div>
-                <div>
-                  <input type="text" value="brightness" name="brightness" size="10"/>
-                </div>
-                <div>
-                <input type="text" value="red" name="red" size="10"/>
-                <input type="text" value="bleu" name="bleu" size="10"/>
-                <input type="text" value="grenne" name="grenne" size="10"/>
-                </div>
-                 
-                <button className='bouton'>
-                  sudmit
-                </button>
-                
-               
-            </div>
-        )
-    }
+
+
+      </div>
+    )
+  }
 }
 
 
@@ -91,4 +93,4 @@ export default Light
 
 
 
-  
+
