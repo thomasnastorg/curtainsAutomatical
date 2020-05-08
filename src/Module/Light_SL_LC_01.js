@@ -1,37 +1,47 @@
 import React, { Component } from 'react'
-//import { Connector } from 'mqtt-react';
 import mqtt from 'mqtt'
+import { json } from 'body-parser';
+//import { SketchPicker } from 'react-color';
 
-
+var client = mqtt.connect('ws://192.168.1.105:4000')
 
 export class Light extends Component{
-    state ={
-        value: 50,
-        redBleuGrenne: "50, 12, 23"
-        
+  constructor(props){
+    super(props);
+  this.state ={ 
+    eta:"on"
     }
+   
+  }
     componentDidMount() {
-      this.client = mqtt.connect('ws://192.168.1.105:8000')  
+      this.client = mqtt.connect('ws://192.168.1.105:4000')  
       this.client.on("connect", ()=> {
+        console.log("Connected to MQTT")
+        this.client.subscribe('state/state', console.log) //position 0
+        })
+      
+      this.client.on('message', (topic, message ) => {
+         
+        this.setState({
+          eta : message.toString(),
+          //couleur : message.toString()
+        })
+        console.log("eta "+ this.state.eta)
         
-         console.log("connected")
-       
-      })
-
-      this.client.on('message',  (topic, message) => {
-        // message is Buffer
-        console.log(message.toString())
       })
     }
+   
     componentWillMount(){
+      
       if(this.client)
       this.client.end()
     }
-    handleOnchange = (e) =>this.setState({value: e.target.value} )
-    
-    
-
-
+    //handleOnchange = (e) =>this.setState({brightness: e.target.brightness} )
+  
+    handleClick() {
+      this.setState(this.state.isToggleOn ? 'ON' : 'OFF')
+    }
+  
     render() {
         return(
           
@@ -40,11 +50,23 @@ export class Light extends Component{
                 <div className="text-center-Dark">
                     LED
                 </div >
-                <div>RED</div>
-                <div className = "slidecontainer">
-                <input type="range" min="0" max="255" value={this.state.value} className="slider" onChange={this.handleOnchange} />
-                <div className="value">{this.state.value}</div>
+                <div>
+                <button onClick={() => this.handleClick()} className='bouton' size='5' >
+                {this.state.eta}
+                </button>
                 </div>
+                <div>
+                  <input type="text" value="brightness" name="brightness" size="10"/>
+                </div>
+                <div>
+                <input type="text" value="red" name="red" size="10"/>
+                <input type="text" value="bleu" name="bleu" size="10"/>
+                <input type="text" value="grenne" name="grenne" size="10"/>
+                </div>
+                 
+                <button className='bouton'>
+                  sudmit
+                </button>
                 
                
             </div>
@@ -58,3 +80,15 @@ export default Light
 
 
 
+/*
+ <div>RED</div>
+                <div className = "slidecontainer">
+                <input type="range" min="0" max="255" value={this.state.brightness} className="slider" onChange={this.handleOnchange} />
+                <div className="brightness">{this.state.brightness}</div>
+                </div>
+*/
+
+
+
+
+  
