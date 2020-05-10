@@ -5,6 +5,9 @@ import { json } from 'body-parser';
 
 var client = mqtt.connect('ws://192.168.1.105:4000')
 
+
+
+
 export class Light extends Component {
   constructor(props) {
     super(props);
@@ -21,17 +24,19 @@ export class Light extends Component {
     })
 
     this.client.on('message', (topic, message) => {
-
-      if(console.log(message.toString()) == "ON"){
-        this.handleClick('OFF')
-      }else{
-        this.handleClick('ON')
-      }
-      
-
+      this.updateEta(message.toString())
     })
-  }
 
+  }
+  updateEta(message) {
+    if (message == "ON") {
+      this.setState({ eta: "ON" })
+    } if (message == "OFF") {
+      this.setState({ eta: "OFF" })
+    } else {
+      console.log("message Unkonwn")
+    }
+  }
   componentWillMount() {
 
     if (this.client)
@@ -40,8 +45,14 @@ export class Light extends Component {
   //handleOnchange = (e) =>this.setState({brightness: e.target.brightness} )
 
   handleClick() {
-    (this.setState(state=>({eta: !state.eta  })))
-    
+    if (this.state.eta == "ON") {
+      this.client.publish('state/set', "OFF")
+    } else {
+      this.client.publish('state/set', "ON")
+    }
+  }
+  colorset(){
+    this.client.publish('color/set','255,20,0')
   }
 
   render() {
@@ -54,7 +65,7 @@ export class Light extends Component {
                 </div >
         <div>
           <button onClick={() => this.handleClick()} className='bouton' size='5' >
-            {this.state.eta ? 'ON' : 'OFF'}
+            {this.state.eta}
           </button>
         </div>
         <div>
@@ -65,12 +76,13 @@ export class Light extends Component {
           <input type="text" value="bleu" name="bleu" size="10" />
           <input type="text" value="grenne" name="grenne" size="10" />
         </div>
-
         <button className='bouton'>
           sudmit
-                </button>
-
-
+        </button>
+        
+        <button onClick={() => this.colorset()} className='bouton'>
+          set color
+        </button>
       </div>
     )
   }
@@ -94,3 +106,4 @@ export default Light
 
 
 
+/* thomas badroom,kincen, */
