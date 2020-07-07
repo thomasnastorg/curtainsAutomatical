@@ -27,20 +27,17 @@
     --breakpoint-xl: 1200px;
     --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-  
-body{
-    margin: 100px 20px 20px;
+}
 
+body {
+    margin: 100px 20px 20px;
     background: #202528
 }
 
-.container{
+.container {
     width: 100%;
     height: auto;
     background: #202528;
-    
-
     /*add flax box style**/
     display: flex;
     flex-direction: row;
@@ -48,23 +45,22 @@ body{
     flex-flow: wrap;
 }
 
-.frame{
+.frame {
     width: 362px;
     height: 419px;
-    background:#343B40;
-    margin: 20px ;
+    background: #343B40;
+    margin: 20px;
     box-sizing: border-box;
     font-size: 50px;
-    
-    box-shadow:0px 3px 6px 0px rgba(0,0,0,0.45);
-
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.45);
 }
 
-.text-Dark{
+.text-Dark {
     color: white;
     margin: 0px;
 }
-.text-center-Dark{
+
+.text-center-Dark {
     text-align: center;
     color: white;
 }
@@ -72,25 +68,29 @@ body{
 .topnav {
     overflow: hidden;
     background-color: #333;
-  }
-  
-  /* Navbar links */
-  .topnav a {
+}
+
+
+/* Navbar links */
+
+.topnav a {
     float: left;
     display: block;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
-  
-  /* Links - change color on hover */
-  .topnav a:hover {
+}
+
+
+/* Links - change color on hover */
+
+.topnav a:hover {
     background-color: #ddd;
     color: black;
-  }
+}
 
-  p {
+p {
     display: block;
     margin-block-start: 0em;
     margin-block-end: 0em;
@@ -158,48 +158,36 @@ h6 {
     font-weight: bold;
 }
 
-
 .slidecontainer {
-    width: 100%; /* Width of the outside container */
-  }
-  
-  /* The slider itself */
-  .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 100%; /* Full-width */
-    height: 25px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-  }
-  
-  /* Mouse-over effects */
-  .slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
-  }
-  
-  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
-  
-  .slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #4CAF50; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
+    position: relative ;
+    right: 180px;
+    transform: rotate(-90deg);
+    width: 100%;
+    /* Width of the outside container */
+}
 
-  .bouton {
-    background-color: #4CAF50; /* Green */
+
+input[type="range"]{
+    width: 50%;
+    -webkit-appearance: none;
+    height: 5px;
+    position: relative;
+    background-color: gray;
+    border-radius: 5px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    background-color: green;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
+.bouton {
+    background-color: #4CAF50;
+    /* Green */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -207,4 +195,18 @@ h6 {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-  }
+}
+
+.bouton-state {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    position: relative;
+    left: 130px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

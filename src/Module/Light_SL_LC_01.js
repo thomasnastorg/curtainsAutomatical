@@ -1,11 +1,22 @@
 import React, { Component } from 'react'
 import mqtt from 'mqtt'
-import { json } from 'body-parser';
-//import { SketchPicker } from 'react-color';
+import iro from '@jaames/iro';
+
 
 var client = mqtt.connect('ws://192.168.1.105:4000')
 
-
+var colorPicker = new iro.ColorPicker("#picker", {
+  // Set the size of the color picker
+  width: 200,
+  // Set the initial color to pure red
+  color: "#f00",
+  layout: [
+    { 
+      component: iro.ui.Wheel,
+      options: {}
+    },
+  ]
+});
 
 
 export class Light extends Component {
@@ -51,9 +62,7 @@ export class Light extends Component {
       this.client.publish('state/set', "ON")
     }
   }
-  colorset(){
-    this.client.publish('color/set','255,20,0')
-  }
+  
 
   render() {
     return (
@@ -64,25 +73,17 @@ export class Light extends Component {
           LED
                 </div >
         <div>
-          <button onClick={() => this.handleClick()} className='bouton' size='5' >
+          <button onClick={() => this.handleClick()} className='bouton-state'  >
             {this.state.eta}
           </button>
         </div>
-        <div>
-          <input type="text" value="brightness" name="brightness" size="10" />
+      
+        <div className="slidecontainer">
+          <input type="range" min="0" max="255" value={this.state.brightness} className="slider" onChange={this.handleOnchange} />
+          <div>{this.state.brightness}</div>
         </div>
-        <div>
-          <input type="text" value="red" name="red" size="10" />
-          <input type="text" value="bleu" name="bleu" size="10" />
-          <input type="text" value="grenne" name="grenne" size="10" />
-        </div>
-        <button className='bouton'>
-          sudmit
-        </button>
+        <div id="picker"></div>
         
-        <button onClick={() => this.colorset()} className='bouton'>
-          set color
-        </button>
       </div>
     )
   }
@@ -94,16 +95,9 @@ export default Light
 
 
 
-/*
- <div>RED</div>
-                <div className = "slidecontainer">
-                <input type="range" min="0" max="255" value={this.state.brightness} className="slider" onChange={this.handleOnchange} />
-                <div className="brightness">{this.state.brightness}</div>
-                </div>
-*/
 
 
 
 
 
-/* thomas badroom,kincen, */
+
