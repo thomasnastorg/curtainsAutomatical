@@ -1,6 +1,6 @@
 //  Bibliothéque 
 #include <Arduino.h> //couc
-#include <ESP8266WiFi.h>
+#include <ESP8266WiFi.h> //tes avec la mac
 #include <ESP8266WiFiMulti.h>
 #include <WiFiUdp.h>
 #include <WiFiClient.h>
