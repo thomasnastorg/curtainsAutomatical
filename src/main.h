@@ -12,7 +12,7 @@
 //
 
 #define ssid "Route_TN"
-#define password "1234567"
+#define password "1234567890"
 const int FW_VERSION = 1000;
 const char* urlBase = "http://192.168.1.107/arduino/"; // ****  update url  **** 
 const char* NamModule = "humidity.ino.d1_mini";
