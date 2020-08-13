@@ -13,9 +13,9 @@
 
 #define ssid "Route_TN"
 #define password "1234567890"
-//const int FW_VERSION = 1000;
-//const char* urlBase = "http://192.168.1.107/arduino/"; // ****  update url  **** 
-//const char* NamModule = "humidity.ino.d1_mini";
+const int FW_VERSION = 1000;
+const char* urlBase = "http://192.168.1.107/arduino/"; // ****  update url  **** 
+const char* NamModule = "humidity.ino.d1_mini";
 
 //Variables en lien avec les moteurs
 const int stepPin = 4;
@@ -122,7 +122,7 @@ void initialiserRideaux()
 }
 
 // automatic update
-/*void checkForUpdates() {
+void checkForUpdates() {
   String q< = String( NamModule );;
   String fwURL = String( urlBase );
   fwURL.concat( Nam );
@@ -174,12 +174,12 @@ void initialiserRideaux()
     Serial.println( httpCode );
   }
   httpClient.end();
-}*/
+}
 
 
 void setup(){
   Serial.begin(115200);
-  /*Serial.print(" is Connecting to "); /: we used for update arduino
+  Serial.print(" is Connecting to ");
   Serial.println(ssid);
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
@@ -190,9 +190,9 @@ void setup(){
     
     ESP.restart();
     
-  }*/
+  }
 
-  
+  checkForUpdates(); 
 
     
     pinMode(stepPin, OUTPUT);
