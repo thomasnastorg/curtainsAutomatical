@@ -1,3 +1,4 @@
+// WIFI
 #define ssid "Route_TN"
 #define password "1234567890"
 //const int FW_VERSION = 1000;
@@ -21,7 +22,8 @@ const int statewindo = A0;
 bool etatRideaux = 0; //Fermés = 0, Ouverts = 1
 bool etatRideauxVoulu = 1; //Fermés = 0, Ouverts = 1
 bool allOk = 1;
-int modeRideaux = 2; // Luminosité = 0, Minuterie = 1, Manuel = 2
+int modeRideaux = 2; // 0 = deffaut 1 = normally 2 = time 3 = manuel by poucent 
+
 
 // MQTT
 // Source https://github.com/256dpi/arduino-mqtt

@@ -114,19 +114,20 @@ void connect() {
 
 //MQTT recieved message 
 
-/*void subscribemessage(){
-  
+void subscribemessage(){
+  Serial.print("connecting to channel broker");
   client.subscribe("curtains/statenow");
   client.subscribe("curtains/statewant");
   client.subscribe("curtains/mode");
   client.subscribe("curtains/pourcent");
 
-} */
+} 
 
-void messageReceived(String &topic, String &payload) {
+void messageReceived(MQTTClient *client, char topic[], char payload[], int payload_length) {
   Serial.println("incoming: " + topic + " - " + payload);
-
+  
 }
+
 
 
 void setup(){
@@ -166,9 +167,10 @@ void setup(){
   WiFi.begin(ssid, password);
 
   client.begin(brokerip, net);
-  //subscribemessage();
+  
   
   connect();
+  subscribemessage();
 }
 
 
@@ -180,7 +182,11 @@ void loop()
 
   if (!client.connected()) {
     connect();
+    subscribemessage();
   }
+
+
+  
 
   client.onMessage(messageReceived);
 
