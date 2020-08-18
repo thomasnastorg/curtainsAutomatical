@@ -144,7 +144,19 @@ modeRideaux = payload.toInt();
   
 }
 
-
+void checkEtats()
+{
+  if(allOk)
+  {
+    if(etatRideauxVoulu != etatRideaux)
+    {
+      if(etatRideauxVoulu)
+        ouvrirRideaux();
+      else
+        fermerRideaux(totalRotations);
+    }
+  }
+}
 
 
 void setup(){
