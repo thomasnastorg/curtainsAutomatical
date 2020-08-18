@@ -105,7 +105,7 @@ void connect() {
     delay(1000);
   }
 
-  Serial.print("\nconnecting to broker...");
+  Serial.println("\nconnecting to broker...");
   while (!client.connect("arduino", "try", "try")) {
     Serial.print(".");
     delay(1000);
@@ -115,7 +115,7 @@ void connect() {
 //MQTT recieved message 
 
 void subscribemessage(){
-  Serial.print("connecting to channel broker");
+  Serial.println("connecting to channel broker");
   client.subscribe("curtains/statenow");
   client.subscribe("curtains/statewant");
   client.subscribe("curtains/mode");
@@ -123,12 +123,27 @@ void subscribemessage(){
 
 } 
 
-void messageReceived(MQTTClient *client, char topic[], char payload[], int payload_length) {
-  Serial.println("incoming: " + topic + " - " + payload);
+void messageReceived(String &topic, String &payload) {
+  
+ if(topic == "curtains/statewant")
+ {
+ etatRideauxVoulu = payload.toInt();
+ }
+ //else if (topic == "curtains/pourcent")
+ // = payload.toInt();
+ else if (topic == "curtains/mode")
+ {
+modeRideaux = payload.toInt();
+}
 
-  modeRideaux = (char topic["curtains/mode"])
+ else
+ {
+   Serial.println("is the wong message");
+ }
+  //modeRideaux("curtains/mode",payload);
   
 }
+
 
 
 
@@ -163,7 +178,7 @@ void setup(){
 
   initialiserRideaux();
 
-  Serial.print(" is Connecting to ");
+  Serial.println(" is Connecting to ");
   Serial.println(ssid);
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
@@ -187,13 +202,12 @@ void loop()
     subscribemessage();
   }
 
-
-  
-
-  client.onMessage(messageReceived);
-
-  Serial.print(modeRideaux)
-
+client.onMessage(messageReceived);
+Serial.println("-----------");
+Serial.println(modeRideaux);
+Serial.println(etatRideauxVoulu);
+Serial.println(etatRideaux);
+delay(3000);
   
 }
 
