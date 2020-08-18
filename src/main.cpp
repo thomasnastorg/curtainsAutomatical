@@ -214,6 +214,8 @@ void loop()
     subscribemessage();
   }
 
+  checkEtats()
+
 client.onMessage(messageReceived);
 Serial.println("-----------");
 Serial.println(modeRideaux);
