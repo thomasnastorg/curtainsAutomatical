@@ -125,6 +125,8 @@ void subscribemessage(){
 
 void messageReceived(MQTTClient *client, char topic[], char payload[], int payload_length) {
   Serial.println("incoming: " + topic + " - " + payload);
+
+  modeRideaux = (char topic["curtains/mode"])
   
 }
 
@@ -189,6 +191,8 @@ void loop()
   
 
   client.onMessage(messageReceived);
+
+  Serial.print(modeRideaux)
 
   
 }
